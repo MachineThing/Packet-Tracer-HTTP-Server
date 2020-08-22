@@ -1,0 +1,35 @@
+<!-- An app manifest file is required
+     for desktop apps or exporting as a .pkp file. -->
+<application>
+  
+  <!-- Unique ID to identify this project,
+       recommend using reverse domain name notation -->
+  <id>mason.fisher.http</id>
+  <version>1.0</version>
+  <name>Http Server</name>
+  
+  <!-- Optional tags -->
+  <description>A HTTP server</description>
+  <author>Mason Fisher</author>
+  <contact></contact>
+  
+  <!-- If this app is to be installed on the Desktop,
+       provide this tag and its children. -->
+  <gui>
+    <name>Python HTTP Server</name>
+    <html>gui.html</html>
+    <icon>python.png</icon>
+    <background>true</background>
+  </gui>
+  
+  <!-- If this app is to be exported, you can specify the devices
+       that this app will automatically installed on.
+	   Either the gui or cli tag is required.
+	   Possible values are PC, Laptop, Server, Tablet, Smartphone, SBC, Thing. -->
+  <auto-install>
+    <device>PC</device>
+    <device>Laptop</device>
+    <device>Server</device>
+  </auto-install>
+  
+</application>
