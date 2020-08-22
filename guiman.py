@@ -21,4 +21,4 @@ def log(errorlvl, text):
 	except:
 		raise InvalidErrorLevel(errorlvl)
 	else:
-		gui.update(errorlvl, text)
+		gui.update(errorlvl, time.strftime("%H:%M:%S")+" - " + text)

@@ -25,7 +25,10 @@ def main():
 	HTTPServer.route("/*", onRouteWildcard)
 
 	# start server on port 80
-	log(1, HTTPServer.start(80))
+	if HTTPServer.start(80) == True:
+		log(1, "HTTP Server started!")
+	else:
+		log(3, "HTTP Server failed to start!")
 
 	# don't let it finish
 	while True:
