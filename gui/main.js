@@ -1,13 +1,13 @@
 function update(type, text) {
 	var node = document.createElement("li");
 	switch(type) {
-		case "error":
+		case "3":
 			node.style.color = "red";
 			break;
-		case "warning":
+		case "2":
 			node.style.color = "yellow";
 			break;
-		case "info":
+		case "1":
 			node.style.color = "blue";
 			break;
 		default:

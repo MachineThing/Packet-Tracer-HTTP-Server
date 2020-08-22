@@ -15,19 +15,10 @@ class InvalidErrorLevel(Exception):
 		super().__init__(self.msg)
 
 def log(errorlvl, text):
-	errortxt = None
 	try:
-		if errorlvl == 3:
-			errortxt = "error"
-		elif errorlvl == 2:
-			errortxt = "warning"
-		elif errorlvl == 1:
-			errortxt = "info"
-		elif errorlvl == 0:
-			errortxt = "normal"
-		else:
+		if errorlvl > 3 or errorlvl < 0:
 			raise Exception
 	except:
 		raise InvalidErrorLevel(errorlvl)
 	else:
-		gui.update(errortxt, text)
+		gui.update(errorlvl, text)
