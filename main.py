@@ -2,25 +2,30 @@ from http import *
 from time import *
 from guiman import log
 
-def onRouteRoot(url, resp):
-	log(1, "Request for /");
-	resp.setContentType("text/html")
-	resp.sendFile("/index.html")
-	
-def onRouteCss(url, resp):
-	log(1, "Request for /style.css")
-	resp.setContentType("text/css")
-	resp.sendFile("/style.css")
+class http_page:
+	def __init__(self, file, mimetype="text/html"):
+		self.file = file
+		self.mimetype = mimetype
+	def get_page(self, path, resp):
+		log(1, "Request for \""+path+"\"")
+		resp.setContentType(self.mimetype)
+		print(self.file, path)
+		resp.sendFile(self.file)
+	def route(self, path):
+		HTTPServer.route(path, self.get_page)
 
-def onRouteWildcard(url, resp):
-	log(1, "Request for " + url)
-	resp.setContentType("text/html")
-	resp.send("404")
+# HTML Files
+index = http_page("/index.html")
+page_not_found = http_page("/404.html")
+
+# CSS Files
+
+styles = http_page("/style.css", "text/css")
 
 def main():
-	HTTPServer.route("/", onRouteRoot)
-	HTTPServer.route("/style.css", onRouteCss)
-	HTTPServer.route("/*", onRouteWildcard)
+	index.route("/")
+	page_not_found.route("/*")
+	styles.route("/style.css")
 
 	# start server on port 80
 	if HTTPServer.start(80) == True:
